@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>NITHS Pure Javascript</title>
+	<script src="../../Library/js/jquery.js"></script>
+	<meta charset="UTF-8">
+	<style type="text/css">
+	
+	.lockerFree {
+		width:100px;
+		height:100px;
+		background: green;
+		float:left;
+		margin-right:5px;
+	}
+	
+	.lockerTaken{
+		width:100px;
+		height:100px;
+		background: red;
+		float:left;
+	}
+	
+	</style>
+</head>
+<body>
+
+<div id="lockers">
+</div>
+
+ <script>
+
+$.getJSON("http://api.niths.no/lockers/1", function(data) {
+    $.each(data, function(k, value){
+    	if(value.id == undefined ) {
+	    	$("#lockers").append("<div class='lockerFree'></div>");
+    	}
+    	
+    	
+    	else{
+	    	$("#lockers").append("<div class='lockerTaken'></div>");
+    	}
+    });
+});
+
+    </script>
+
+</body>
+</html>
+</html>

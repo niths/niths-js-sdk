@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>NITHS - With Facebook!</title>
+	<script src="../../Library/js/jquery.js"></script>
+	<meta charset="UTF-8">
+	<style type="text/css">
+	
+	#data {
+		display:none; /* hidden while loading data */
+	}
+	</style>
+</head>
+<body>
+
+<!-- A cute little loader while we do our magic in Javascript !-->
+<img id="loading"src="../../Library/img/load.gif"/>
+
+<div id="data">
+</div>
+
+<script>
+// In this example we are just getting the first committee.
+$.getJSON("http://api.niths.no/committees", function(data) {
+		
+		
+		// Appending name and description from NITHS API
+		$("#data").append("<h1>" + data[1].name + "</h1>");
+		$("#data").append("<p><b>About:</b> " + data[1].description + "</p>");
+		
+		
+		/* Yo dawg, I heard you liked getJSON so we GOT JSON in JSON - straight from Facebook!
+		   We select which fields we want, in this case picture and likes - easy as pie!    */
+		$.getJSON("https://graph.facebook.com/augnith?fields=picture,likes", function(data) {
+		
+		$("#data").append("<img src='" + data.picture.data.url+ "'/>");
+		$("#data").append("<p>" + data.likes+ " people likes this!</p>");
+		});
+
+// At this point all data should be loaded, so lets go ahead and fade it properly!
+
+$("#loading").hide();
+$("#data").fadeIn();
+
+});
+
+
+
+</script>
+</body>
+</html>
+</html>

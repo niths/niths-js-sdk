@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>NITHS - Consoles & Games</title>
+	<script src="../../Library/js/jquery.js"></script>
+	<meta charset="UTF-8">
+</head>
+<body>
+boo
+
+<script type="text/javascript">
+
+
+
+
+
+
+$.ajax({
+
+    url: 'http://api.giantbomb.com/search/?api_key=cec2658d52deb655e2ad06693d0382976501fdcf&query=crash%20bandicoot&field_list=name,image&format=jsonp&json_callback=gamer',
+    data: 'hello',
+    type: 'GET',
+    crossDomain: true,
+    dataType: 'jsonp',
+    success: function() { alert("Success"); },
+    error: function() { alert('Failed!'); },
+    beforeSend: ''
+});
+</script>
+
+</body>
+</html>
+</html>
