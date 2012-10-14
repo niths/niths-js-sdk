@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>NITHS - Game Details</title>
+	<script src="../../Library/js/jquery.js"></script>
+	<meta charset="UTF-8">
+	<style type="text/css">
+	#games {
+		width:250px;
+		list-style: square;
+	}
+	
+	#games li {
+		padding:5px;
+	}
+	
+	</style>
+</head>
+<body>
+
+<script>
+
+/* You'll need to insert a API key to use this page. This can be obtained for FREE
+ * at giantbomb. Visit api.giantbomb.com to sign up now! */
+ 
+
+$.getJSON("http://api.niths.no/games/64", function(data) {
+  $("body").append("<h1>"+data.title+"</h1><p><b>"+ data.console.name + " (skap " +data.console.locker+")</b><br/>"+ data.category+"</p>");
+  
+   $.ajax({
+          url: "http://api.giantbomb.com/search/",
+          type: "get",
+          data: {api_key : "INSERT_YOUR_KEY_HERE", query: data.title, field_list : "image", format : "jsonp", json_callback : "gamer" },
+          dataType: "jsonp"
+        });
+
+
+
+});
+function gamer(data) {
+    $("body").append("<img src='"+  data.results[0].image.icon_url + "'/>");
+}
+       
+</script>
+</body>
+</html>
+	

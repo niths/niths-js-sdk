@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>NITHS - Game Details</title>
+	<script src="../../Library/js/jquery.js"></script>
+	<meta charset="UTF-8">
+	<style type="text/css">
+	#games {
+		width:250px;
+		list-style: square;
+	}
+	
+	#games li {
+		padding:5px;
+	}
+	
+	</style>
+</head>
+<body>
+
+<h1>List of games</h1>
+
+<ul id="games">
+	
+</ul>
+
+<script>
+$.getJSON("http://api.niths.no/games", function(data) {
+    $.each(data, function(k, value){
+    $("ul").append("<li>"+ value.title +"</li>");
+    });
+});
+
+
+
+</script>
+</body>
+</html>
+	
